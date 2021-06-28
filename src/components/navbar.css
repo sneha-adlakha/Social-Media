@@ -1,7 +1,90 @@
 .navbarContainer{
+    height:3rem;
+    width:100%;
+    background-color:#023e8a;
+    color:white;
+    display:flex;
+    align-items: center;
+    position:sticky;
+    top:0;
+    z-index: 999;
+}
+.leftnav{
+    flex:3;
+}
+
+.logo{
+    font-size:1.5rem;
+    margin-left: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.centernav{
+    flex:5;
+}
+.searchbar{
+    width:100%;
+    height:1.5rem;
+    background-color: white;
+    border-radius: 0.2rem;
+    display: flex;
+    align-items: center;
+}
+.searchicon{
+    font-size:2rem!important;
+    margin-left: 1.2rem;
+    color:black;
+}
+.searchInput{
+    border:none;
+    width:70%;
+}
+
+.searchInput:focus{
+    outline:none;
+}
+
+.rightnav{
+    flex:4;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.rightlink{
+    margin-right: 1.2rem;
+    font-size:1.2rem;
+    cursor:pointer;
+
+}
+.righticons{
+    display: flex;
+}
+.righticonitem{
+    margin-right: 1.5rem;
+    cursor: pointer;
+    position: relative;
+}
+.righticonBadge{
+    width:1.2rem;
+    height: 1.2rem;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top:-7px;
+    right: -7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+
 
 }
 .profilepic{
-    height:400px;
-    width:400px;
+    height:2rem;
+    width:2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
 }

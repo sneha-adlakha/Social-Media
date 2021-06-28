@@ -9,13 +9,16 @@ function Navbar() {
             </div>
             <div className="centernav">
                 <div className="searchbar">
-                    <Search/>
-                    <input placeholder="Search friends" className="searchInput" />
+
+                   <Search className="searchicon"/>
+   
+                <input placeholder="Search friends" className="searchInput" />
+                    
                 </div>
             </div>
             <div className="rightnav">
                 <div className="rightlinks">
-                    <span className="rightlink">Homepage</span>
+                    <span className="rightlink">Home</span>
                     <span className="rightlink">Timeline</span>
                 </div>
                 <div className="righticons">
@@ -29,7 +32,7 @@ function Navbar() {
                     </div>
                     
                 </div>
-                <img src="./assets/uncle.jpeg" alt="" className="profilepic"/>
+                <img src={"/assets/uncle.jpg"} alt="profile" className="profilepic"/>
             </div>
         </div>
     )
