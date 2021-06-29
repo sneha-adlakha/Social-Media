@@ -1,5 +1,5 @@
 import "./navbar.css"
-import {Search,Person,Notifications} from "@material-ui/icons"
+import { Search, Person, Notifications } from "@material-ui/icons"
 
 function Navbar() {
     return (
@@ -9,30 +9,27 @@ function Navbar() {
             </div>
             <div className="centernav">
                 <div className="searchbar">
-
-                   <Search className="searchicon"/>
-   
-                <input placeholder="Search friends" className="searchInput" />
-                    
+                    <Search className="searchicon" />
+                    <input placeholder="Search friends" className="searchInput" />
                 </div>
             </div>
             <div className="rightnav">
                 <div className="rightlinks">
                     <span className="rightlink">Home</span>
-                    <span className="rightlink">Timeline</span>
+                    <span className="rightlink">TimeLine</span>
                 </div>
                 <div className="righticons">
                     <div className="righticonitem">
-                        <Person/>
+                        <Person />
                         <span className="righticonBadge">1</span>
                     </div>
                     <div className="righticonitem">
-                        <Notifications/>
+                        <Notifications />
                         <span className="righticonBadge">1</span>
                     </div>
-                    
+
                 </div>
-                <img src={"/assets/uncle.jpg"} alt="profile" className="profilepic"/>
+                <img src={"/assets/decent.jpg"} alt="profile" className="profilepic" />
             </div>
         </div>
     )
