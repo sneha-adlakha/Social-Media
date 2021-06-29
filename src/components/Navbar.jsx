@@ -1,11 +1,12 @@
 import "./navbar.css"
-import { Search, Person, Notifications } from "@material-ui/icons"
+import { Search, Person, Notifications } from "@material-ui/icons";
+
 
 function Navbar() {
     return (
         <div className="navbarContainer">
             <div className="leftnav">
-                <span className="logo">Makebook</span>
+                <span className="logo">MakebooK</span>
             </div>
             <div className="centernav">
                 <div className="searchbar">
