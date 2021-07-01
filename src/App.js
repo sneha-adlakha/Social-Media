@@ -10,8 +10,11 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route exactpath="/login" element={<Register/>}/>
-        <PrivateRoute exact path="/" element={<Home/>}/>
+      <Route exact path="/register" element={<Register/>}/>
+      <PrivateRoute exactpath="/" element={<Home/>}/>
+      <PrivateRoute exactpath="/login" element={<Login/>}/>
+       
+
       </Routes>
     </div>
   );

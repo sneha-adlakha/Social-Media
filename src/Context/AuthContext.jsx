@@ -21,7 +21,7 @@ export const AuthProvider=({children})=>
             dispatch
         }}
         >
-            {children}S
+            {children}
         </AuthContext.Provider>
     )
 }

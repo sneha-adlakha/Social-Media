@@ -32,3 +32,29 @@
 .logindesc{
     font-size: 5rem;
 }
+
+.loginsection{
+    height: 50rem;
+    padding:1.5rem;
+    background-color: white;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.inputlogin{
+    height: 3rem;
+    border-radius: 0.8rem;
+    border:1px solid grey;
+    font-size: 2rem;
+    padding-left: 1.5rem;
+}
+
+.inputlogin:focus{
+    outline: none;
+}
+
+
+
+
