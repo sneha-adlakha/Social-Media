@@ -15,10 +15,10 @@ export const Login = () => {
                 </div>
                 <div className="rightlogin">
                     <form className="loginsection">
-                        <input>Email</input>
-                        <input>Password</input>
-                        <button>Login</button>
-                        <button>Signup</button>
+                        <input value="email"/>
+                        <input value="password"/>
+                        <input value="login"/>
+                        <input value="signup"/>
                     </form>                  
                    </div>
                 </div>
