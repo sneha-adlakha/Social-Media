@@ -34,8 +34,8 @@
 }
 
 .loginsection{
-    height: 50rem;
-    padding:1.5rem;
+    height: 25rem;
+    padding:1rem;
     background-color: white;
     border-radius: 1rem;
     display: flex;
@@ -44,11 +44,10 @@
 }
 
 .inputlogin{
-    height: 3rem;
-    border-radius: 0.8rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
     border:1px solid grey;
-    font-size: 2rem;
-    padding-left: 1.5rem;
+    font-size: 1rem;
 }
 
 .inputlogin:focus{
