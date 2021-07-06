@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
+    const name=useRef();
     const username = useRef();
     const email = useRef();
     const password = useRef();
@@ -17,15 +18,16 @@ export const Register = () => {
         }
         else{
             const user={
+                name:username.current.value,
                 username:username.current.value,
+                email:email.current.value,
                 password:password.current.value,
-                repeatPassword:repeatPassword.current.value,
             };
             try{
-                await axios.post("https://SocialMedia.snehaadlakha.repl.co/auth/user",user);
-                navigate('/login')
+                const response=await axios.post("https://SocialMedia.snehaadlakha.repl.co/auth/register",user);
+                console.log(response);
             }catch(err){
-                console.log("error");
+                console.log(err);
             }
         }
     };
@@ -42,6 +44,7 @@ export const Register = () => {
                 </div>
                 <div className="rightlogin">
                     <form className="loginsection" onSubmit={submitHandler}>
+                    <input className="inputlogin" placeholder="Name" required ref={name} />
                         <input className="inputlogin" placeholder="Enter UserName" required ref={username} />
                         <input className="inputlogin" placeholder="Email" required ref={email} type="email" />
                         <input className="inputlogin" placeholder="Password" required ref={password} type="password" minLength="6" />
