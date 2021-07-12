@@ -3,13 +3,16 @@ import "./register.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export const Register = () => {
+
+export const Register = () => 
+{
     const name=useRef();
     const username = useRef();
     const email = useRef();
     const password = useRef();
     const repeatPassword = useRef();
     const navigate=useNavigate();
+    
 
     const submitHandler=async(e)=>{
         e.preventDefault();
@@ -23,9 +26,10 @@ export const Register = () => {
                 email:email.current.value,
                 password:password.current.value,
             };
-            try{
-                const response=await axios.post("https://SocialMedia.snehaadlakha.repl.co/auth/register",user);
-                console.log(response);
+            try
+            {
+                await axios.post("https://SocialMedia.snehaadlakha.repl.co/auth/register",user);
+                navigate('/login');
             }catch(err){
                 console.log(err);
             }
@@ -45,12 +49,12 @@ export const Register = () => {
                 <div className="rightlogin">
                     <form className="loginsection" onSubmit={submitHandler}>
                     <input className="inputlogin" placeholder="Name" required ref={name} />
-                        <input className="inputlogin" placeholder="Enter UserName" required ref={username} />
-                        <input className="inputlogin" placeholder="Email" required ref={email} type="email" />
-                        <input className="inputlogin" placeholder="Password" required ref={password} type="password" minLength="6" />
-                        <input className="inputlogin" placeholder="Repeat Password" required ref={repeatPassword} type="password" />
-                        <button className="registerbtn" type="submit">SignUp</button>
-                        <button className="registerbtn">Login</button>
+                    <input className="inputlogin" placeholder="Enter UserName" required ref={username} />
+                    <input className="inputlogin" placeholder="Email" required ref={email} type="email" />
+                    <input className="inputlogin" placeholder="Password" required ref={password} type="password" minLength="6" />
+                    <input className="inputlogin" placeholder="Repeat Password" required ref={repeatPassword} type="password" />
+                    <button className="registerbtn" type="submit">SignUp</button>
+                    <button className="loginbtn">Login</button>
                     </form> 
                 </div>
             </div>
