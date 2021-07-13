@@ -10,16 +10,10 @@ function App() {
   return (
     <div>
       <Routes>
-      <Route exactpath="/" element={<Login/>}/>
+      <Route exactpath="/" element={{user}?<Home/>:<Register/>}/>
       <Route exact path="/register" element={<Register/>}/>
-      <PrivateRoute exactpath="/" element={<Home/>}/>
-      
-      
-      
-      
-       
-
-      </Routes>
+      <Route exactpath="/" element={<Home/>}/>
+     </Routes>
     </div>
   );
 }
