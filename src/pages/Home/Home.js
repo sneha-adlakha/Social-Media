@@ -7,7 +7,7 @@ function Home() {
         <div>
             <Navbar/>
             <div className="homeContainer">
-                <Sidebar/>\
+                <Sidebar/>
                 <Feed/>
             </div>
         </div>

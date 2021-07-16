@@ -14,10 +14,6 @@ function App() {
       <Route exactpath="/">{user?<Home/>:<Register/>}</Route>
       <Route exactpath="/login">{user?<Navigate replace state={{from:"/login"}} to={"/"}/>:<Login/>}</Route>
       <Route exact path="/register">{user?<Navigate replace state={{from:"/register"}} to={"/"}/>:<Register/>}</Route>
-      
-         
-       
-
       </Routes>
     </div>
   );

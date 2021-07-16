@@ -1,7 +1,9 @@
 import React from 'react'
 import {useAuth} from "../Context/AuthContext";
 import {useState,useEffect} from "react";
+import "./feed.css"
 import axios from 'axios';
+import Post from "./Post"
 
 function Feed({username}) 
 {
@@ -28,7 +30,7 @@ function Feed({username})
             
                 {!username||username===user.username}
                 {posts.map((p)=>(
-                    <h1>{p._id}</h1>
+                    <Post key={p._id} post={p}/>
         
                 ))}
 

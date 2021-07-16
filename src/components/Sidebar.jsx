@@ -25,9 +25,10 @@ function Sidebar() {
                         <HelpIcon className="sideIcon"/>
                         <span className="sideListItemText">Help</span>
                     </li>
-                    <button className="sidebtn"> See More
-                        </button>
+
                 </ul>
+                <button className="sidebtn"> See More
+                        </button>
             </div>   
         </div>
     )
