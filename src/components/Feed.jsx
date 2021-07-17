@@ -3,7 +3,8 @@ import {useAuth} from "../Context/AuthContext";
 import {useState,useEffect} from "react";
 import "./feed.css"
 import axios from 'axios';
-import Post from "./Post"
+import Post from "./Post";
+import Share from "./Share";
 
 function Feed({username}) 
 {
@@ -28,7 +29,7 @@ function Feed({username})
         <div className="feed">
             <div className="feedWrapper">
             
-                {!username||username===user.username}
+                {(!username||username===user.username)&&<Share/>}
                 {posts.map((p)=>(
                     <Post key={p._id} post={p}/>
         

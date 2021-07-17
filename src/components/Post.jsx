@@ -9,9 +9,10 @@ function Post({ post }) {
     const [isLiked, setisLiked] = useState(false);
     const [user, setUser] = useState({});
     const { user: currentUser } = useAuth();
+    console.log("post",post);
     useEffect(() => {
         setisLiked(post.likes.includes(currentUser._id));
-    }, [post.likes, currentUser._id]);
+    }, [currentUser._id,post.likes]);
 
     useEffect(() => {
         const fetchuser = async () => {
@@ -25,10 +26,9 @@ function Post({ post }) {
             const res=axios.put(`https://SocialMedia.snehaadlakha.repl.co/posts/`+post._id+"/like",{userId:currentUser._id});
             console.log(res);
         }
-        catch(err){
+        catch(err){}
             setLike(isLiked?like-1:like+1);
             setisLiked(!isLiked);
-        }
     };
 
     return (
@@ -37,7 +37,6 @@ function Post({ post }) {
             <div className="postwrapper">
                 <div className="posttop">
                     <div className="postleft">
-                   
                         <img src={user.profilePicture?user.profilePicture:"/assets/decent.jpg"} alt="" className="postprofileimg" />
                         <span className="userName">{user.username}</span>
                         <span className="postedon">{post.createdAt}</span>
@@ -48,7 +47,7 @@ function Post({ post }) {
                 </div>
                 <div className="postcenter">
                     <span className="postText">{post?.desc}</span>
-                    <img src={"/assets/boy.jpg"} alt="" className="postImg" />
+                    <img src={"https://SocialMedia.snehaadlakha.repl.co/images"+post.image} alt="" className="postImg" />
                 </div>
                 <div className="postbottom">
                     <div className="postbottomleft">
