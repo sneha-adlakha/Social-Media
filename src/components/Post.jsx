@@ -2,7 +2,8 @@ import "./post.css"
 import { useAuth } from "../Context/AuthContext";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom"; 
+import { NavLink } from "react-router-dom";
+import {format} from "timeago.js"
 
 function Post({ post }) {
     const [like, setLike] = useState(post.likes.length);
@@ -39,7 +40,7 @@ function Post({ post }) {
                     <div className="postleft">
                         <img src={user.profilePicture?user.profilePicture:"/assets/decent.jpg"} alt="" className="postprofileimg" />
                         <span className="userName">{user.username}</span>
-                        <span className="postedon">{post.createdAt}</span>
+                        <span className="postedon">{format(post.createdAt)}</span>
                     </div>
                     <div className="posttopright">
                         View More
@@ -47,7 +48,7 @@ function Post({ post }) {
                 </div>
                 <div className="postcenter">
                     <span className="postText">{post?.desc}</span>
-                    <img src={"https://SocialMedia.snehaadlakha.repl.co/images"+post.image} alt="" className="postImg" />
+                    <img src={"https://SocialMedia.snehaadlakha.repl.co/images/"+post.image} alt="" className="postImg" />
                 </div>
                 <div className="postbottom">
                     <div className="postbottomleft">
