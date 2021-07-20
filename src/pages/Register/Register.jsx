@@ -54,7 +54,7 @@ export const Register = () =>
                     <input className="inputlogin" placeholder="Password" required ref={password} type="password" minLength="6" />
                     <input className="inputlogin" placeholder="Repeat Password" required ref={repeatPassword} type="password" />
                     <button className="registerbtn" type="submit">SignUp</button>
-                    <button className="loginbtn" type="button" onClick={()=>navigate("/")}>Login</button>
+                    <button className="loginbtn" type="button" onClick={()=>navigate("/login")}>Login</button>
                     </form> 
                 </div>
             </div>
