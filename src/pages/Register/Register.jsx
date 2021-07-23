@@ -1,7 +1,7 @@
 import {useRef} from "react";
 import "./register.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 
 
 export const Register = () => 
@@ -54,7 +54,8 @@ export const Register = () =>
                     <input className="inputlogin" placeholder="Password" required ref={password} type="password" minLength="6" />
                     <input className="inputlogin" placeholder="Repeat Password" required ref={repeatPassword} type="password" />
                     <button className="registerbtn" type="submit">SignUp</button>
-                    <button className="loginbtn" type="button" onClick={()=>navigate("/login")}>Login</button>
+                    <NavLink to="/login"><button className="loginbtn">Login</button></NavLink>
+                    
                     </form> 
                 </div>
             </div>

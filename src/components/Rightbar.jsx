@@ -13,11 +13,12 @@ const HomeRightBar=()=>{
     useEffect(() => {
         const fetchUsers=async()=>{
             const response=
-            await axios.get("https://SocialMedia.snehaadlakha.repl.co/users");
+            await axios.get("https://SocialMedia.snehaadlakha.repl.co/users/all");
             setAllUsers(response.data.users);
         };
         fetchUsers();
     }, []);
+
     return(
         <>
         <div className="birthdayContainer">
@@ -49,7 +50,7 @@ function Rightbar({user}) {
     useEffect(() => {
         const fetchFriends=async()=>{
             try{
-                const friendList=await axios.get("https://SocialMedia.snehaadlakha.repl.co/users/friends"+user._id);
+                const friendList=await axios.get("https://SocialMedia.snehaadlakha.repl.co/users/friends/"+user._id);
                 setFriends(friendList.data);
             }
             catch(err){
@@ -59,7 +60,7 @@ function Rightbar({user}) {
         fetchFriends();
     }, [user])
 
-    const profileRightBar=()=>{
+    const ProfileRightBar=()=>{
         return(
             <>
             {user.username !== currentUser.username &&(
@@ -98,7 +99,7 @@ function Rightbar({user}) {
     return (
         <div className="rightbar">
             <div className="rightWrapper"></div>
-            {user?<profileRightBar/>: <HomeRightBar/>}
+            {user?<ProfileRightBar/>: <HomeRightBar/>}
 
         </div>
 

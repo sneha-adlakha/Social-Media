@@ -1,8 +1,9 @@
 import Home from "./pages/Home/Home";
 import {useAuth} from "./Context/AuthContext";
-import {Routes,Route,Navigate} from "react-router-dom";
+import {Routes,Route} from "react-router-dom";
 import {Login} from "./pages/Login/Login";
 import {Register} from "./pages/Register/Register";
+import {Profile} from "./pages/Profile/Profile";
 import {PrivateRoute} from "./PrivateRoute/PrivateRoute";
 
 function App() {
@@ -11,9 +12,10 @@ function App() {
   return (
     <div>
       <Routes>
-      <Route exactpath="/">{user?<Home/>:<Register/>}</Route>
-      <Route exactpath="/login">{user?<Navigate replace state={{from:"/login"}} to={"/"}/>:<Login/>}</Route>
-      <Route exact path="/register">{user?<Navigate replace state={{from:"/register"}} to={"/"}/>:<Register/>}</Route>
+      <Route exact path="/">{user ? <Home /> : <Register />}</Route>
+      <Route exact path="/login" element={<Login/>}/>
+      <PrivateRoute exact path="/home" element={<Home />}/>
+      <PrivateRoute exact path="/profile/:username" element={<Profile/>}/>
       </Routes>
     </div>
   );
