@@ -1,3 +1,4 @@
+import "./profile.css"
 import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
 import Feed from "../../components/Feed";
@@ -35,7 +36,7 @@ export const Profile=()=>
                 </div>
                 <div className="profileRightBottom">
                     <Feed username={username}/>
-                    {/* <Rightbar user={user}/> */}
+                    <Rightbar user={user}/>
                 </div>
             </div>
         </div>

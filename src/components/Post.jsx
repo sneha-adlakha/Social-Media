@@ -17,7 +17,7 @@ function Post({ post }) {
 
     useEffect(() => {
         const fetchuser = async () => {
-            const response = await axios.get(`https://SocialMedia.snehaadlakha.repl.co/users?userid=${post.userId}`);
+            const response = await axios.get(`https://SocialMedia.snehaadlakha.repl.co/users?userId=${post.userId}`);
             setUser(response.data);
         };
         fetchuser();

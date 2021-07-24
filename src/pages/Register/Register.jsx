@@ -29,7 +29,7 @@ export const Register = () =>
             try
             {
                 await axios.post("https://SocialMedia.snehaadlakha.repl.co/auth/register",user);
-                navigate('/');
+                navigate('/home');
             }catch(err){
                 console.log(err);
             }
