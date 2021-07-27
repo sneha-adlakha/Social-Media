@@ -6,8 +6,26 @@ import {useEffect,useState} from "react";
 import axios from 'axios';
 import { Navigate } from "react-router-dom";
 
+function Rightbar({user}) {
+    const {user:currentUser,dispatch} =useAuth();
+    const [friends,setFriends]=useState([]);
+    const [followed,setFollowed]=useState(currentUser.followings.includes(user?.id));
 
+    useEffect(() => {
+        const fetchFriends=async()=>{
+            try{
+                const friendList=await axios.get("https://SocialMedia.snehaadlakha.repl.co/users/friends/"+user._id);
+                console.log("freindList",friendList.data);
+                setFriends(friendList.data);
+            }
+            catch(err){
+                console.log(err);
+            }
+        };
+        fetchFriends();
+    }, [user])
 
+    
 const HomeRightBar=()=>{
     const [allUsers,setAllUsers] =useState([])
     useEffect(() => {
@@ -37,34 +55,34 @@ const HomeRightBar=()=>{
             </ul>
             </>  
     )
-}
+};
 
-
-
-
-function Rightbar({user}) {
-    const {user:currentUser,dispatch} =useAuth();
-    const [friends,setFriends]=useState([]);
-    const [followed,setFollowed]=useState(currentUser.followings.includes(user?.id));
-
-    useEffect(() => {
-        const fetchFriends=async()=>{
-            try{
-                const friendList=await axios.get("https://SocialMedia.snehaadlakha.repl.co/users/friends/"+user._id);
-                setFriends(friendList.data);
+    const handleClick=async()=>{
+        try{
+            if(followed){
+                await axios.put(`https://socialmedia.snehaadlakha.repl.co/users/${user._id}/unfollow`,
+                {
+                    userId:currentUser._id
+                });
+            dispatch({type:"UNFOLLOW",payload:user._id,});
             }
-            catch(err){
-                console.log(err);
+            else{
+                await axios.put(`https://socialmedia.snehaadlakha.repl.co/users/${user._id}/follow`,
+                {
+                    userId:currentUser._id,
+                });
+                dispatch({type:"FOLLOW",payload:user._id});
             }
-        };
-        fetchFriends();
-    }, [user])
-
+            setFollowed(!followed);
+        }catch(err){
+        }
+    };
     const ProfileRightBar=()=>{
         return(
             <>
-            {user.username !== currentUser.username &&(
-                <button className="rightFollowBtn">{followed?"UnFollow":"Follow"}</button>
+            {user.username !== currentUser.username &&
+            (
+                <button className="rightFollowBtn" onClick={handleClick}>{followed?"UnFollow":"Follow"}</button>
             )}
             <h4 className="rightBarTitle">User Information</h4>
             <div className="rightBarInfo">
@@ -83,14 +101,10 @@ function Rightbar({user}) {
             </div>
             <h4 className="rightBarTitle">User Friends</h4>
             <div className="rightBarFollowings">{friends.map((friend)=>(
-            <Navigate
-                   to={("/profile/"+friend.username)}
-                   style={{TextDecoration:"none"}}>;
             <div className="rightBarFollwing">
             <img src={"/assets/decent.jpg"} alt="" className="rightBarFollowingImg" />
             <span className="rightBarFollowingName">{friend.username}</span>
             </div>
-            </Navigate>
              ))}
             </div>
             </>

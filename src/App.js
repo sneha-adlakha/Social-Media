@@ -3,7 +3,7 @@ import {useAuth} from "./Context/AuthContext";
 import {Routes,Route} from "react-router-dom";
 import {Login} from "./pages/Login/Login";
 import {Register} from "./pages/Register/Register";
-import {Profile} from "./pages/Profile/Profile";
+import Profile from "./pages/Profile/Profile";
 import {PrivateRoute} from "./PrivateRoute/PrivateRoute";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
       <Route exact path="/">{user ? <Home /> : <Register />}</Route>
       <Route exact path="/login" element={<Login/>}/>
       <PrivateRoute exact path="/home" element={<Home />}/>
-      <PrivateRoute exact path="/profile/:username" element={<Profile/>}/>
+      <Route exact path="/profile/:username" element={<Profile/>}/>
       </Routes>
     </div>
   );

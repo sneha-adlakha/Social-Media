@@ -10,7 +10,6 @@ function Post({ post }) {
     const [isLiked, setisLiked] = useState(false);
     const [user, setUser] = useState({});
     const { user: currentUser } = useAuth();
-    console.log("post",post);
     useEffect(() => {
         setisLiked(post.likes.includes(currentUser._id));
     }, [currentUser._id,post.likes]);
@@ -25,7 +24,6 @@ function Post({ post }) {
     const likeHandler=()=>{
         try{
             const res=axios.put(`https://SocialMedia.snehaadlakha.repl.co/posts/`+post._id+"/like",{userId:currentUser._id});
-            console.log(res);
         }
         catch(err){}
             setLike(isLiked?like-1:like+1);

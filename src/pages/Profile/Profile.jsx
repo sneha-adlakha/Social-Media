@@ -1,4 +1,4 @@
-import "./profile.css"
+import "./profile.css";
 import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
 import Feed from "../../components/Feed";
@@ -6,18 +6,20 @@ import Rightbar from "../../components/Rightbar";
 import axios from "axios";
 import {useState,useEffect} from "react";
 import {useParams} from "react-router";
-export const Profile=()=>
+export default function Profile()
 {
     const [user,setUser]=useState({})
     const username=useParams().username;
     useEffect(()=>{
         const fetchUser=async()=>{
             const res= await axios.get(`https://SocialMedia.snehaadlakha.repl.co/users?username=${username}`);
-            console.log(res);
+            console.log("response",res.data);
             setUser(res.data);
         };
         fetchUser();
     },[username]);
+
+    
     return(
         <>
         <Navbar/>

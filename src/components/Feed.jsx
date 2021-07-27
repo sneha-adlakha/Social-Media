@@ -16,7 +16,7 @@ function Feed({username})
             const response=username?
             await axios.get("https://SocialMedia.snehaadlakha.repl.co/posts/profile/"+username):
             await axios.get("https://SocialMedia.snehaadlakha.repl.co/posts/timeline/"+user._id);
-            
+            console.log(response);
             setPosts(response.data.sort((p1,p2)=>{
                 return new Date(p2.createdAt) - new Date(p1.createdAt);
             })
