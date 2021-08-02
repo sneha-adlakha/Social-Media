@@ -8,16 +8,21 @@ import { Navigate } from "react-router-dom";
 
 function Rightbar({user}) {
     const {user:currentUser,dispatch} =useAuth();
+    const [allUsers,setAllUsers] =useState([])
     const [friends,setFriends]=useState([]);
-    const [followed,setFollowed]=useState(currentUser.followings.includes(user?.id));
-
+    const flag=currentUser.followings.includes(user._id);
+    console.log(currentUser.followings);
+    const [followed,setFollowed]=useState(flag);
+    console.log("followed",followed);
     useEffect(() => {
-        const fetchFriends=async()=>{
+        const fetchFriends= async()=>{
             try{
                 const friendList=await axios.get("https://SocialMedia.snehaadlakha.repl.co/users/friends/"+user._id);
                 console.log("freindList",friendList.data);
                 setFriends(friendList.data);
-            }
+                const response=await axios.get("https://SocialMedia.snehaadlakha.repl.co/users/all");
+                setAllUsers(response.data.users);
+            }  
             catch(err){
                 console.log(err);
             }
@@ -25,37 +30,6 @@ function Rightbar({user}) {
         fetchFriends();
     }, [user])
 
-    
-const HomeRightBar=()=>{
-    const [allUsers,setAllUsers] =useState([])
-    useEffect(() => {
-        const fetchUsers=async()=>{
-            const response=
-            await axios.get("https://SocialMedia.snehaadlakha.repl.co/users/all");
-            setAllUsers(response.data.users);
-        };
-        fetchUsers();
-    }, []);
-
-    return(
-        <>
-        <div className="birthdayContainer">
-            <img src={"/assets/decent.jpg"} alt="" className="birthdayImg" />
-            <span className="birthdayText">
-                <b>Megha</b> and <b>2 Others</b> have Birthdays Today.
-            </span>
-            </div>
-            <img src={"/assets/uncle.jpg"} alt="" className="rightAdImg" />
-            <h5 className="rightbarTitle">Online Friends</h5>
-            <ul className="rightbarFriendList">
-                {allUsers.map((u)=>(
-                    <Online key={u.id} user={u}/>
-
-                ))}
-            </ul>
-            </>  
-    )
-};
 
     const handleClick=async()=>{
         try{
@@ -76,13 +50,35 @@ const HomeRightBar=()=>{
             setFollowed(!followed);
         }catch(err){
         }
-    };
+    };    
+const HomeRightBar=()=>{
+    return(
+        <>
+        <div className="birthdayContainer">
+            <img src={"/assets/decent.jpg"} alt="" className="birthdayImg" />
+            <span className="birthdayText">
+                <b>Megha</b> and <b>2 Others</b> have Birthdays Today.
+            </span>
+            </div>
+            <img src={"/assets/uncle.jpg"} alt="" className="rightAdImg" />
+            <h5 className="rightbarTitle">Online Friends</h5>
+            
+            <ul className="rightbarFriendList">
+                {allUsers.map((u)=>(
+                    <Online key={u.id} user={u}/>
+
+                ))}
+            </ul>
+            </>  
+    )
+};
+
     const ProfileRightBar=()=>{
         return(
             <>
             {user.username !== currentUser.username &&
             (
-                <button className="rightFollowBtn" onClick={handleClick}>{followed?"UnFollow":"Follow"}</button>
+                <button className="rightFollowBtn" onClick={()=>handleClick()}>{followed?"UnFollow":"Follow"}</button>
             )}
             <h4 className="rightBarTitle">User Information</h4>
             <div className="rightBarInfo">
@@ -101,7 +97,7 @@ const HomeRightBar=()=>{
             </div>
             <h4 className="rightBarTitle">User Friends</h4>
             <div className="rightBarFollowings">{friends.map((friend)=>(
-            <div className="rightBarFollwing">
+            <div key={friend._id} className="rightBarFollwing">
             <img src={"/assets/decent.jpg"} alt="" className="rightBarFollowingImg" />
             <span className="rightBarFollowingName">{friend.username}</span>
             </div>
@@ -114,12 +110,7 @@ const HomeRightBar=()=>{
         <div className="rightbar">
             <div className="rightWrapper"></div>
             {user?<ProfileRightBar/>: <HomeRightBar/>}
-
         </div>
-
-
-
-
     )
 }
 
