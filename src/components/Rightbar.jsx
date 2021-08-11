@@ -9,7 +9,7 @@ import { Navigate } from "react-router-dom";
 function Rightbar({user}) 
 {
     const {user:currentUser,dispatch} =useAuth();
-    const [allUsers,setAllUsers] =useState([])
+    const allUsers=[{username:"Megha"},{username:"Swati"},{username:"Yash"},{username:"Aditya"}];
     const [friends,setFriends]=useState([]);
     const [followed,setFollowed]=useState(currentUser.followings.includes(user?._id));
     console.log("followed",followed);
@@ -23,9 +23,6 @@ function Rightbar({user})
                     setFollowed(currentUser.followings.includes(user?._id))
 
                 }
-                const response=await axios.get("https://SocialMedia.snehaadlakha.repl.co/users/all");
-                setAllUsers(response.data.users);
-                console.log("allUsers",allUsers);
             }  
             catch(err){
                 console.log(err);
@@ -56,12 +53,13 @@ function Rightbar({user})
         }
     };    
 const HomeRightBar=()=>{
+
     return(
         <>
         <div className="birthdayContainer">
             <img src={"/assets/decent.jpg"} alt="" className="birthdayImg" />
             <span className="birthdayText">
-                <b>{allUsers[3].username}</b> <b>, {allUsers[4].username} and 2 others</b> have Birthdays Today.
+                <b>Megha</b> <b>,Mohan and 2 others</b> have Birthdays Today.
             </span>
             </div>
             <img src={"/assets/uncle.jpg"} alt="" className="rightAdImg" />
@@ -117,4 +115,4 @@ const ProfileRightBar=()=>{
     )
 }
 
-export default Rightbar
+export default Rightbar;
