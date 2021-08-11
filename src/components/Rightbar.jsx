@@ -6,22 +6,26 @@ import {useEffect,useState} from "react";
 import axios from 'axios';
 import { Navigate } from "react-router-dom";
 
-function Rightbar({user}) {
+function Rightbar({user}) 
+{
     const {user:currentUser,dispatch} =useAuth();
     const [allUsers,setAllUsers] =useState([])
     const [friends,setFriends]=useState([]);
-    const flag=currentUser.followings.includes(user._id);
-    console.log(currentUser.followings);
-    const [followed,setFollowed]=useState(flag);
+    const [followed,setFollowed]=useState(currentUser.followings.includes(user?._id));
     console.log("followed",followed);
     useEffect(() => {
         const fetchFriends= async()=>{
             try{
-                const friendList=await axios.get("https://SocialMedia.snehaadlakha.repl.co/users/friends/"+user._id);
-                console.log("freindList",friendList.data);
-                setFriends(friendList.data);
+                if(user){
+                    const friendList=await axios.get("https://SocialMedia.snehaadlakha.repl.co/users/friends/"+user._id);
+                    console.log("freindList",friendList.data);
+                    setFriends(friendList.data);
+                    setFollowed(currentUser.followings.includes(user?._id))
+
+                }
                 const response=await axios.get("https://SocialMedia.snehaadlakha.repl.co/users/all");
                 setAllUsers(response.data.users);
+                console.log("allUsers",allUsers);
             }  
             catch(err){
                 console.log(err);
@@ -57,7 +61,7 @@ const HomeRightBar=()=>{
         <div className="birthdayContainer">
             <img src={"/assets/decent.jpg"} alt="" className="birthdayImg" />
             <span className="birthdayText">
-                <b>Megha</b> and <b>2 Others</b> have Birthdays Today.
+                <b>{allUsers[3].username}</b> <b>, {allUsers[4].username} and 2 others</b> have Birthdays Today.
             </span>
             </div>
             <img src={"/assets/uncle.jpg"} alt="" className="rightAdImg" />

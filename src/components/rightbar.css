@@ -1,7 +1,6 @@
 .rightbar{
     flex:1.5
 }
-
 .rightWrapper{
     padding:1.5rem 1.5rem 0 0;
 }
@@ -26,8 +25,63 @@
 .rightbarTitle{
     margin-bottom: 1.5rem;
 }
-.rightbarFriendList {
+.rightbarFriendList 
+{
     padding: 0;
     margin: 0;
     list-style: none;
-  }
+}
+.rightFollowBtn{
+    margin-top:4rem;
+    margin-bottom: 1rem;
+    border:none;
+    background-color:#023e8a;
+    color:white;
+    border-radius: 0.5rem;
+    padding:0.5rem 1rem;
+    display:flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 300;
+    cursor: pointer;
+}
+.rightFollowBtn:focus{
+    outline: none;
+}
+.rightBarTitle{
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+.rightBarInfo{
+    margin-bottom: 3.5rem;
+}
+.rightBarInfoItem{
+    margin-bottom: 1rem;
+}
+.rightBarInfoKey{
+    font-weight: 300;
+    margin-right: 1.5rem;
+    color:#555;
+}
+.rightBarInfoValue{
+    font-weight: 300;
+}
+.rightBarFollowings{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.rightBarFollwing{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+}
+.rightBarFollowingImg{
+    height:2rem;
+    width:2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+}
