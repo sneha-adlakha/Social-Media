@@ -76,8 +76,7 @@ const HomeRightBar=()=>{
             </>  
     )
 };
-
-    const ProfileRightBar=()=>{
+const ProfileRightBar=()=>{
         return(
             <>
             {user.username !== currentUser.username &&
