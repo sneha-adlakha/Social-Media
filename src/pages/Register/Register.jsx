@@ -54,8 +54,7 @@ export const Register = () =>
                     <input className="inputlogin" placeholder="Password" required ref={password} type="password" minLength="6" />
                     <input className="inputlogin" placeholder="Repeat Password" required ref={repeatPassword} type="password" />
                     <button className="registerbtn" type="submit">SignUp</button>
-                    <NavLink to="/login"><button className="loginbtn">Login</button></NavLink>
-                    
+                    <NavLink to="/login" className="registerbtn" style={{textDecoration:"none",alignment:"center"}}>Login</NavLink>
                     </form> 
                 </div>
             </div>
