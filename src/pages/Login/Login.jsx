@@ -1,6 +1,6 @@
 import React from 'react';
 import {axios} from "axios";
-import {useRef} from "react";
+import {useRef,useState} from "react";
 import Loader from "react-loader-spinner";
 import {useAuth} from "../../Context/AuthContext";
 import { NavLink,useNavigate } from "react-router-dom";
@@ -14,6 +14,7 @@ export const Login=()=> {
     const username = useRef();
     const password = useRef();
     const {isLoading,dispatch}=useAuth();
+    const navigate=useNavigate();
     return(
        
         <div className="login">
@@ -23,16 +24,16 @@ export const Login=()=> {
                         MakeBook
                     </div>
                     <div className="logindesc">
-                        Make Friends with MakeBook.
+                       Catchup Friends with MakeBook  
                     </div>
                 </div>
                 <div className="rightlogin">
                     <form className="loginsection" onSubmit={submitHandler}>
                     <input className="inputlogin" placeholder="Enter UserName" required ref={username} />
                     <input className="inputlogin" placeholder="Password" required ref={password} type="password" minLength="5" />                  
-                    <button className="loginbtn" type="submit" disabled={isLoading}>{isLoading? (<Loader type="Oval" color="#f50057" height={50} width={50} />):("Login")}</button>
-                    <span>Forgot Password</span>
-                    <NavLink to="/"><button className="registerbtn"> {isLoading? (<Loader type="Oval" color="#f50057" height={50} width={50} />):("Register Now")}</button></NavLink>
+                    <button className="registerbtn" type="submit" disabled={isLoading}>{isLoading? (<Loader type="Oval" color="#f50057" height={50} width={50} />):("Login")}</button>
+                    <span className="forgetbtn">Forgot Password?</span>
+                    <button className="registerbtn" onClick={()=>navigate("/")}> {isLoading? (<Loader type="Oval" color="#f50057" height={50} width={50} />):("Register Now")}</button>
                     </form> 
                 </div>
             </div>
